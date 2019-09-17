@@ -117,3 +117,42 @@ isPalindrome = (str) => {
   let reverseStr = lowRegStr.split('').reverse().join('');
   return reverseStr === lowRegStr;
 }
+
+// #########################################################
+
+function collectOddValues(arr){
+  let newArr = [];
+
+  if(arr.length === 0 ) {
+  reutrn newArr
+  }
+
+ if (arr[0] % 2 !== 0){
+  newArr.push(arr[0]);
+  }
+
+  newArr = newArr.concat(collectOddValues(arr.slice(1)));
+  return newArr;
+
+}
+
+// chunk([1,2,3,4,5], 2) =======> [[1,2], [4,5], [5]]
+
+
+function chunk(array, size) {
+  const chunked = [];
+
+  for (let element of array) {
+    const last = chunked[chunked.length - 1];
+
+    if (!last || last.length === size) {
+      chunked.push([element]);
+    } else {
+      last.push(element);
+    }
+  }
+
+  return chunked
+}
+
+ chunk([1,2,3,4,5,6,6,6,7,7,7], 3)
